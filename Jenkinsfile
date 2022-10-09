@@ -85,7 +85,7 @@ stage('Docker Image Push') {
 
 stage('K8S Manifest Update') {
   steps {
-    git credentialsId: Jiw0n23,
+    git credentialsId: githubCredential,
         url: 'https://github.com/Jiw0n23/pythonmysite',
         branch: 'master'
         
