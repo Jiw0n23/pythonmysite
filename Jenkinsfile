@@ -3,7 +3,6 @@ pipeline {
     tools {
       maven 'Maven3'
     }
-}
 
 environment {
   dockerHubRegistry = 'jiwon2/project'
