@@ -16,6 +16,14 @@ node {
         docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}"){
             image = docker.build("${ECR_PATH}/${ECR_IMAGE}", "--network=host --no-cache .")
         }
+    post {
+      failure { 
+        echo 'Docker image build failure' 
+      slackSend (color: '#FF0000', message: "FAILED: Docker Image Build '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})") } 
+      success { 
+        echo 'Docker image build success'  
+      slackSend (color: '#0AC9FF', message: "SUCCESS: Docker Image Build '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})") }
+    }    
     }
     stage('Push to ECR'){
         docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}"){
