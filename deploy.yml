@@ -16,4 +16,4 @@ spec:
         - name: app
           image: 678481348986.dkr.ecr.ap-northeast-2.amazonaws.com/projectrp:django
           ports:
-            - containerPort: 8000
+            - containerPort: 8080
