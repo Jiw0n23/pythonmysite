@@ -14,6 +14,7 @@ node {
     stage('Docker Build'){
         // Docker Build
         docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}"){
+            sh "docker login -u ${USERNAME} -p ${PASSWORD}"
             image = docker.build("${ECR_PATH}/${ECR_IMAGE}", "--network=host --no-cache .")
         }
     }
