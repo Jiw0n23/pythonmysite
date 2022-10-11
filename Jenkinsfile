@@ -19,14 +19,14 @@ node {
     post {
       success {
         slackSend (
-          channel: SLACK_CHANNEL,
+          channel: project2,
           color: SLACK_SUCCESS_COLOR,
           message: "Docker Image Build에 성공하였습니다."
         )
       } 
       failure {
         slackSend (
-          channel: SLACK_CHANNEL,
+          channel: project2,
           color: SLACK_FAIL_COLOR,
           message: "Docker Image Build에 실패하였습니다."
         )
