@@ -37,4 +37,5 @@ node {
             sh "rm output.yml"
         }
     }
+  }
 }
