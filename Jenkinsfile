@@ -17,14 +17,22 @@ node {
             image = docker.build("${ECR_PATH}/${ECR_IMAGE}", "--network=host --no-cache .")
         }
     post {
-      failure { 
-        echo 'Docker image build failure' 
-      slackSend (color: '#FF0000', message: "FAILED: Docker Image Build '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})") } 
-      success { 
-        echo 'Docker image build success'  
-      slackSend (color: '#0AC9FF', message: "SUCCESS: Docker Image Build '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})") }
-    }    
-    }
+      success {
+        slackSend (
+          channel: SLACK_CHANNEL,
+          color: SLACK_SUCCESS_COLOR,
+          message: "Docker Image Build에 성공하였습니다."
+        )
+      } 
+      failure {
+        slackSend (
+          channel: SLACK_CHANNEL,
+          color: SLACK_FAIL_COLOR,
+          message: "Docker Image Build에 실패하였습니다."
+        )
+      }
+   }
+}
     stage('Push to ECR'){
         docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}"){
             image.push("v${env.BUILD_NUMBER}")
