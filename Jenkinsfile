@@ -6,7 +6,7 @@ EKS_JENKINS_CREDENTIAL_ID='kubectl-deploy-credentials'
 ECR_PATH = '678481348986.dkr.ecr.ap-northeast-2.amazonaws.com'
 ECR_IMAGE = 'projectrp'
 AWS_CREDENTIAL_ID = 'jenkins-aws-anderson-credentials'
-SLACK_CHANNEL = 'slack'
+SLACK = 'project222'
 
 node {
     stage('Clone Repository'){
