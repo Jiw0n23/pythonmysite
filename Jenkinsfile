@@ -6,7 +6,6 @@ EKS_JENKINS_CREDENTIAL_ID='kubectl-deploy-credentials'
 ECR_PATH = '678481348986.dkr.ecr.ap-northeast-2.amazonaws.com'
 ECR_IMAGE = 'projectrp'
 AWS_CREDENTIAL_ID = 'jenkins-aws-anderson-credentials'
-SLACK = 'project222'
 
 node {
     stage('Clone Repository'){
@@ -16,10 +15,7 @@ node {
         // Docker Build
         docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}"){
             image = docker.build("${ECR_PATH}/${ECR_IMAGE}", "--network=host --no-cache .")
-        }
-    stage("notification") {
-        slackSend color: '#BADA55', message: 'Docker Image Build Success!', channel: project222
-    }    
+        } 
     stage('Push to ECR'){
         docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}"){
             image.push("v${env.BUILD_NUMBER}")
