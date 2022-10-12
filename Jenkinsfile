@@ -17,7 +17,7 @@ node {
             image = docker.build("${ECR_PATH}/${ECR_IMAGE}", "--network=host --no-cache .")
         }
     stage("notification") {
-        slackSend color: '#BADA55', message: 'Docker Image Build Success!', channel: <project222>
+        slackSend color: '#BADA55', message: 'Docker Image Build Success!', channel: project222
     }    
     stage('Push to ECR'){
         docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_ID}"){
