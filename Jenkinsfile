@@ -1,5 +1,5 @@
 REGION = 'ap-northeast-2'
-EKS_API = 'https://AE0727C3A0B3F4E50B61887B9F08B9F1.gr7.ap-northeast-2.eks.amazonaws.com'
+EKS_API = 'https://61F3BDD2D3613FFCC64014D121DE763E.yl4.ap-northeast-2.eks.amazonaws.com'
 EKS_CLUSTER_NAME='project-test'
 EKS_NAMESPACE='default'
 EKS_JENKINS_CREDENTIAL_ID='kubectl-deploy-credentials'
