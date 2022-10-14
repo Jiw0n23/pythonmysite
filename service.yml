@@ -14,10 +14,10 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: django-test-alb
+  name: project-test-alb
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: instance
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
   ingressClassName: alb
   rules:
