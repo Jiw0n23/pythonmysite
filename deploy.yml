@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: django
+  name: django-app
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: django
+      app: django-app
   template:
     metadata:
       labels:
